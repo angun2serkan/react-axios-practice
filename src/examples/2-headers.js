@@ -4,11 +4,20 @@ import axios from 'axios';
 const url = 'https://icanhazdadjoke.com/';
 // Accept : 'application/json'
 
-const Headers = () => {
+const HeaderSetup = () => {
   const [joke, setJoke] = useState('random dad joke');
 
   const fetchDadJoke = async () => {
-    console.log('fetch dad joke');
+    try {
+      const {data} = await axios.get(url, {
+        headers:{
+          Accept: 'application/json',
+        },
+      });
+      setJoke(data.joke);
+    } catch (error) {
+      console.log(error.response);
+    }
   };
 
   return (
@@ -20,4 +29,4 @@ const Headers = () => {
     </section>
   );
 };
-export default Headers;
+export default HeaderSetup;

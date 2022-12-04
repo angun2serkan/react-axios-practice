@@ -8,7 +8,7 @@ const FirstRequest = () => {
     try {
       const response = await axios.get(url);
       const data = response.data;
-      console.log(data);
+      console.log(response);
     } catch (error) {
       console.log(error.response);
     }
